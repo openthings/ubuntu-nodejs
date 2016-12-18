@@ -1,0 +1,17 @@
+#aarch64/ubuntu-nodejs
+FROM aarch64/ubuntu
+MAINTAINER openthings <openthings@163.com>
+
+# gpg keys listed at https://github.com/nodejs/node
+
+ENV NODE_VERSION "6.9.2"
+ENV ARCH arm64
+
+RUN apt-get update  
+RUN apt-get install -y wget curl
+#&& apt-get upgrade -y
+	
+#RUN wget https://nodejs.org/dist/v6.9.2/node-v6.9.2-linux-arm64.tar.xz &&\
+#	tar -xJf "node-v6.9.2-linux-arm64.tar.xz" -C /usr/local --strip-components=1 &&\
+COPY ./node-v6.9.2-linux-arm64	/usr/local
+CMD ["node"]
